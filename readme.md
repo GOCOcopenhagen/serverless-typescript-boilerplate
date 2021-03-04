@@ -1,4 +1,4 @@
-![GOCO Gif](documentation/Teal%20and%20White%20Geometric%20Tech%20YouTube%20Intro.gif)
+![GOCO Gif](documentation/Intro.gif)
 
 
 # Prerequisite
