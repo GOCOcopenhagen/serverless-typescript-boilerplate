@@ -33,11 +33,18 @@ This is where the magic happens.
 - Goto [`localhost:3000`](http://localhost:3000/)
 - Congratulations 🎉
 
+## IAM Roles
+IAM (Identity Acess Management) allows us to restrict and define acess levels on AWS.
+IAM Roles are widely used so this can be overwhelming at first sight. However, the scope we are using IAM for in `serverless.yml`, is to our service acess to other services. Fx we want our function to have acess to our database.
 
-## IAM 
+We can supposed to only give acess to the services we actually use. Fx in [this example](serverless.yml#L32) we give the function acess to all resourcess, but only the sendTemplatedEmail, within SES. In [this other example](serverless.yml#L45) we only give acess to the `${self:custom.stage}-TestTableArn` table and we only allow our service to do simple CRUD operations with the dynamodb table
 
+### Glossary
+- `*` : Select everything [`ses:*`]
+- `Effect` : What we want to do [`Allow/Deny`]
+- 
 
-## Variabels and ServerLess levels
+## Variabels and Serverless levels
 
 custom is the top level
 env.yml is the external api keys
