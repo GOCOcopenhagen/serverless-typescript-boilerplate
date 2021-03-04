@@ -1,6 +1,6 @@
 # GOCO Serverless Node AWS REST API - Typescript 
 
-![GOCO Gif](documentation/intro.gif)
+![GOCO Gif](documentation/into.gif)
 
 
 # Prerequisite
