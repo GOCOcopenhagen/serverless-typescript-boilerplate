@@ -3,7 +3,7 @@ import { Config } from "aws-sdk"
 
 var config = {}
 
-if(process.env.IS_OFFLINE){
+if(process.env.IS_OFFLINE && process.env.stage.includes("dev")){
     config = new Config({
         credentials: {
             accessKeyId: process.env.awsLocalDynammoAccessKey,

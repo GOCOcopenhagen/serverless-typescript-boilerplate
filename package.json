@@ -1,7 +1,7 @@
 {
-  "name": "serverless-typescript-starter",
-  "version": "0.1.0",
-  "description": "A TypeScript starter for Serverless Framework",
+  "name": "serverless-typescript-boilerplate",
+  "version": "1.0.0",
+  "description": "A TypeScript boilerplate for Serverless Framework",
   "main": "handler.js",
   "scripts": {
     "test": "serverless-bundle test",
@@ -9,17 +9,11 @@
     "deploy-dev": "sls deploy --aws-profile devprofile --stage dev"
   },
   "author": "",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AnomalyInnovations/serverless-typescript-starter.git"
-  },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.64",
     "@types/jest": "^26.0.14",
     "@types/uuid": "^8.3.0",
     "serverless-bundle": "3.2.1",
-    "serverless-dynamodb-local": "^0.2.39",
     "serverless-offline": "^6.8.0"
   },
   "dependencies": {

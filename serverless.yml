@@ -3,24 +3,27 @@ service: serverless-typescript-boilerplate
 
 plugins:
   - serverless-bundle # Package our functions with Webpack
-  - serverless-dynamodb-local
   - serverless-offline # Enables offile run
 
 custom:
   stage: ${opt:stage, self:provider.stage}
+  region: eu-west-1
   environment: ${file(./env.yml):${self:custom.stage}, file(./env.yml):default}
 
 provider:
   name: aws
   runtime: nodejs12.x
-  region: eu-west-1
+  region: ${self:custom.region}
   
   environment:
-    TEST_TABLE_NAME: ${self:custom.stage}-test
+    # DEFAULTS
     stage: ${self:custom.stage}
+    region: ${self:custom.region}
     awsLocalDynammoAccessKey: ${self:custom.environment.awsLocalDynammoAccessKey}
     awsLocalDynammoSecretAccessKey: ${self:custom.environment.awsLocalDynammoSecretAccessKey}
 
+    # Tabels (left side programatic name, right side is the aws name)
+    TEST_TABLE_NAME: ${self:custom.stage}-test
 
   iamRoleStatements:
     - Effect: Allow
@@ -38,8 +41,9 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-        #Unrestricting the iam role for Dynamodb
-      Resource: "*"
+        #Restricting the iam role for only the Dynamodb tabels at the current stage
+      Resource: 
+        - "Fn::ImportValue": ${self:custom.stage}-TestTableArn
 
 functions:
   mirror:
@@ -61,7 +65,7 @@ functions:
           method: get
 resources:
   Resources:
-    TodosDynamoDbTable:
+    TestTable:
       Type: 'AWS::DynamoDB::Table'
       DeletionPolicy: Retain
       Properties:
@@ -75,3 +79,11 @@ resources:
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:provider.environment.TEST_TABLE_NAME}
+  Outputs:
+    TestTableArn:
+      Value:
+        Fn::GetAtt:
+          - TestTable
+          - Arn
+      Export:
+        Name: ${self:custom.stage}-TestTableArn
