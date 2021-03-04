@@ -5,7 +5,8 @@
   "main": "handler.js",
   "scripts": {
     "test": "serverless-bundle test",
-    "start": "serverless offline start --stage dev"
+    "start": "serverless offline start --stage dev",
+    "deploy-dev": "sls deploy --aws-profile devprofile --stage dev"
   },
   "author": "",
   "license": "MIT",
@@ -16,12 +17,13 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.64",
     "@types/jest": "^26.0.14",
+    "@types/uuid": "^8.3.0",
     "serverless-bundle": "3.2.1",
-    "serverless-dotenv-plugin": "^3.0.0",
-    "serverless-offline": "^6.8.0",
-    "serverless-dynamodb-local": "^0.2.39"
+    "serverless-dynamodb-local": "^0.2.39",
+    "serverless-offline": "^6.8.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.855.0"
+    "aws-sdk": "^2.855.0",
+    "uuid": "^8.3.2"
   }
 }

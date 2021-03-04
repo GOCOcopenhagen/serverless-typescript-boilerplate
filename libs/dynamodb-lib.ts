@@ -1,6 +1,21 @@
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
+import { Config } from "aws-sdk"
 
-const client: DocumentClient = new DocumentClient();
+var config = {}
+
+if(process.env.IS_OFFLINE){
+    config = new Config({
+        credentials: {
+            accessKeyId: process.env.awsLocalDynammoAccessKey,
+            secretAccessKey: process.env.awsLocalDynammoSecretAccessKey,
+
+        }, 
+        region: 'eu-west-1'
+      });
+}
+
+const client: DocumentClient = new DocumentClient(config);
+
 
 export default {
     get: (params: DocumentClient.GetItemInput): Promise<DocumentClient.GetItemOutput> => client.get(params).promise(),

@@ -3,21 +3,43 @@ service: serverless-typescript-boilerplate
 
 plugins:
   - serverless-bundle # Package our functions with Webpack
+  - serverless-dynamodb-local
   - serverless-offline # Enables offile run
-  - serverless-dotenv-plugin # Load .env as environment variables
 
 custom:
-  myStage: ${opt:stage, self:provider.stage}
+  stage: ${opt:stage, self:provider.stage}
+  environment: ${file(./env.yml):${self:custom.stage}, file(./env.yml):default}
 
 provider:
   name: aws
   runtime: nodejs12.x
   region: eu-west-1
   
-  # To load environment variables externally
   environment:
-    SAMPLE_ENV_VAR: ${env:SAMPLE_ENV_VAR}
-    MESSAGE: ${self:custom.myStage}
+    TEST_TABLE_NAME: ${self:custom.stage}-test
+    stage: ${self:custom.stage}
+    awsLocalDynammoAccessKey: ${self:custom.environment.awsLocalDynammoAccessKey}
+    awsLocalDynammoSecretAccessKey: ${self:custom.environment.awsLocalDynammoSecretAccessKey}
+
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - ses:sendTemplatedEmail
+        #Unrestricting the iam role for SES (Simple Email Service) to only the current stage 
+      Resource:
+        - "*"
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+        #Unrestricting the iam role for Dynamodb
+      Resource: "*"
 
 functions:
   mirror:
@@ -29,9 +51,27 @@ functions:
       - http:
           path: mirror
           method: put
+      - schedule:
+          rate: rate(24 hours)
   user:
     handler: api/user/handler.get
     events:
       - http:
           path: user/{id}
           method: get
+resources:
+  Resources:
+    TodosDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:provider.environment.TEST_TABLE_NAME}
