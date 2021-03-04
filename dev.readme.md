@@ -1,5 +1,5 @@
 
-## Prerequisite
+# Prerequisite
 
 #### Engine: `v12.*` / `Erbium`
 #### AWS CLI `2`
@@ -14,11 +14,17 @@ You will need to define a **named AWS PROFILE**, with administration rights, usi
 
 The profile for this example is named `devprofile` and only used in the `package.json`. If you wish to change the name of your local profile you will only need to change the name here and give the profile another name, when you create it on the AWS Console.
 
-## Purpose
+# Purpose
 
 This service creates AWS databases and API's the ServerLess framework.
 
 [Serverless](https://www.serverless.com/) is a framework to build unified serverless aplication in various programming languages and using varios providers.
+
+# Working with `serverless.yml` 🦄
+This is where the magic happens.
+## Available scripts 
+
+[`npm run test`](/blob/master/package.json#L7)
 
 ## IAM 
 
