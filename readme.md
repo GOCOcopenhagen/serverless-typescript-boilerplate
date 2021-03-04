@@ -1,3 +1,5 @@
+![GOCO Gif](https://sonja.s3-eu-west-1.amazonaws.com/Teal+and+White+Geometric+Tech+YouTube+Intro.gif)
+
 
 # Prerequisite
 
