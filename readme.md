@@ -1,4 +1,4 @@
-# GOCO Serverless Node AWS REST API - Typescript 
+# Serverless Node REST API - Typescript
 
 ![GOCO Gif](documentation/into.gif)
 
