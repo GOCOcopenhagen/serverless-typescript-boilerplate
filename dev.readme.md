@@ -24,7 +24,7 @@ This service creates AWS databases and API's the ServerLess framework.
 This is where the magic happens.
 ## Available scripts 
 
-[`npm run test`](/blob/master/package.json#L7)
+[`npm run test`](package.json#L7)
 
 ## IAM 
 
