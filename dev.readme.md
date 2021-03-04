@@ -24,12 +24,12 @@ This service creates AWS databases and API's the ServerLess framework.
 This is where the magic happens.
 ## Available scripts 
 - [`npm run test`](package.json#L7) Executes evertying that has been wraped in the `function test(:callback)`
-- [`npm starts`](package.json#L7) Starts the api locally on port [`:3000`](http://localhost:3000/)
-- [`npm run deploy-dev`](package.json#L7) Deploys the API and Database to the development eviroment using the *AWS named profile*
+- [`npm starts`](package.json#L8) Starts the api locally on port [`:3000`](http://localhost:3000/)
+- [`npm run deploy-dev`](package.json#L9) Deploys the API and Database to the development eviroment using the *AWS named profile*
 
 ## Getting startet
-- [`npm run deploy-dev`](package.json#L7)
-- [`npm starts`](package.json#L7)
+- [`npm run deploy-dev`](package.json#L9)
+- [`npm starts`](package.json#L8)
 - Goto [`localhost:3000`](http://localhost:3000/)
 - Congratulations 🎉
 
