@@ -1,6 +1,6 @@
 # Serverless Node REST API - Typescript
 
-<h2>Author:</h2> [GOCO Copenhagen](https://goco.dk/)
+Author: [GOCO Copenhagen](https://goco.dk/)
 
 
 ![GOCO Gif](documentation/into.gif)
