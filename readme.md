@@ -56,11 +56,14 @@ This is where the magic happens.
 - [`npm run deploy-dev`](package.json#L9) Deploys the API and Database to the development eviroment using the *AWS named profile*
 
 ## Getting startet
+- Install serverless using [`npm i -g serverless` or equvilant](https://www.serverless.com/framework/docs/getting-started/)
 - Create the [`env.yml`](#creating-a-envyml-) file
 - [`npm run deploy-dev`](package.json#L9)
 - [`npm starts`](package.json#L8)
 - Goto [`localhost:3000`](http://localhost:3000/)
 - Congratulations 🎉 🤩
+- You can test if your api works using the `mirror` endpoint in your browser.
+- You can also test if your connection to the database works, using the `createandlist/{id}` endpoint in your browser.(Notice you should use a number as id refrence)
 
 ## IAM Roles
 IAM (Identity Acess Management) allows us to restrict and define acess levels on AWS.
@@ -84,13 +87,22 @@ We can supposed to only give acess to the services we actually use. Fx in [this 
 [**`serverless.yml/provider.environment`**](serverless.yml#L18) are the service level enviroment variabels. Here we will define the variabels we want to include in this service. *We need to include all the `custom` and `env.yml` variables here.* This might seem as double work, but this gives an security advantages when we have multiple service scopes nested in a service.
 
 ## API
+This serverless frameworks will build a REST Https API Service and after your first deploy, this serivce will be fully available via a AWS-domain.
+
+The API is a subset of functions, which can be availabe through our custom routes. We define our [functions in the `serverless.yml`](serverless.yml#L48).
+
+All functions must have a [name](serverless.yml#L60), which is used as a refrence on the [CloudWatch-](https://aws.amazon.com/cloudwatch/) and [Lambda](https://aws.amazon.com/lambda/) console. 
+
 ### Creating a new endpoint
+
+When creating a new endpoint 
+
 ### CRUD
 ### EVENTS
 ### Handler lib
 
 ## Database 
-*Under normal circumstances a DevOps will have local databases to work on. For this exampel we use an online database. *
+* Under normal circumstances a DevOps will have local databases to work on. For this exampel we use an online database. *
 
 For this exampel we use an online database. 
 
