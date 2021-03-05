@@ -56,6 +56,7 @@ We can supposed to only give acess to the services we actually use. Fx in [this 
 ## Variabels and Serverless levels
 
 **`serverless.yml/custom`** is used as a top level. Here we will have stages, regions and other global service variabels.
+
 **`env.yml`** should be used for external api keys and other variabels outside the service scope.
 
 **`serverless.yml/provider.environment`** are the service level enviroment variabels. Here we will define the variabels we want to include in this service. *We need to include all the `custom` and `env.yml` variables here.* This might seem as double work, but this gives an security advantages when we have multiple service scopes nested in a service.
@@ -67,7 +68,7 @@ We can supposed to only give acess to the services we actually use. Fx in [this 
 ### Handler lib
 
 ## Database 
-Under normal circumstances a DevOps will have local databases to work on. For this exampel we use an online database. 
+*Under normal circumstances a DevOps will have local databases to work on. For this exampel we use an online database. *
 
 For this exampel we use an online database. 
 
