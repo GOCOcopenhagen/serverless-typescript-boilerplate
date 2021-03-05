@@ -1,7 +1,7 @@
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { Config } from "aws-sdk"
 
-var config = {}
+let config = {}
 
 if(process.env.IS_OFFLINE && process.env.stage.includes("dev")){
     config = new Config({

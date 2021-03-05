@@ -1,0 +1,37 @@
+# NOTE: update this with your service name
+service: serverless-typescript-boilerplate-database-schema
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  region: eu-west-1
+  LOG_TABLE_NAME: ${self:custom.stage}-log
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ${self:custom.region}
+
+resources:
+  Resources:
+    LogTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.LOG_TABLE_NAME}
+  Outputs:
+    LogTableArn:
+      Value:
+        Fn::GetAtt:
+          - LogTable
+          - Arn
+      Export:
+        Name: ${self:custom.stage}-LogTableArn

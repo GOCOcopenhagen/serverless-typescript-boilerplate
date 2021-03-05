@@ -1,5 +1,5 @@
 
 
-type response = string | Error | JSON | number | any
+type YOUR_RESPONSE_TYPE = string | Error | JSON | number | any
 
-export { response }
+export { YOUR_RESPONSE_TYPE }

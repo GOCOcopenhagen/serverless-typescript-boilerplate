@@ -6,7 +6,8 @@
   "scripts": {
     "test": "serverless-bundle test",
     "start": "serverless offline start --stage dev",
-    "deploy-dev": "sls deploy --aws-profile devprofile --stage dev"
+    "deploy-dev": "serverless deploy --aws-profile devprofile --stage dev",
+    "deploy-database-dev": "cd database/ && serverless deploy --aws-profile devprofile --stage dev"
   },
   "author": "",
   "devDependencies": {

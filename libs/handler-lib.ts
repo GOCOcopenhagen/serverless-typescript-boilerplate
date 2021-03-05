@@ -1,7 +1,7 @@
 import { Context, APIGatewayEvent, APIGatewayProxyResult } from "aws-lambda";
-import { response } from "./responeTypes";
+import { YOUR_RESPONSE_TYPE } from "./responeTypes";
 
-export default function handler(lambda: (event: APIGatewayEvent, context: Context) => Promise<response>) {
+export default function handler(lambda: (event: APIGatewayEvent, context: Context) => Promise<YOUR_RESPONSE_TYPE>) {
     return async function (event: APIGatewayEvent, context: Context): Promise<APIGatewayProxyResult> {
         try {
             const responseBody = await lambda(event, context);
