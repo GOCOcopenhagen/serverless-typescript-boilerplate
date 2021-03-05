@@ -160,3 +160,5 @@ However, the first time you run deploy-dev, a database on stage dev will be crea
 
 ## Tests
 ***TBA SOON***
+
+![Borat Gif](documentation/gg.gif)
