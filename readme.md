@@ -56,7 +56,7 @@ This is where the magic happens.
 - [`npm run deploy-dev`](package.json#L9) Deploys the API and Database to the development eviroment using the *AWS named profile*
 
 ## Getting startet
-- [Create the `env.yml` file](readme.md#L9)
+- Create the [`env.yml`](#creating-a-envyml-) file
 - [`npm run deploy-dev`](package.json#L9)
 - [`npm starts`](package.json#L8)
 - Goto [`localhost:3000`](http://localhost:3000/)
