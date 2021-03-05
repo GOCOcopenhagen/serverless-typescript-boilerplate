@@ -35,22 +35,20 @@ You will need to create this file yourself.
 ⚠️ ⚠️ ⚠️ **You should NEVER commit the `env.yml` file to github!** ⚠️ ⚠️ ⚠️
 
 ```yml
-
-# HOW TO USE:
-#
-# 1 Add environment variables for local development.
-# 2 Make sure to not commit this file.
-
 prod:
   testEnv: "This is a test env on production"
+  ...
 
 default:
   testEnv: "This is a test env on development/catch all"
   awsLocalDynammoAccessKey: "special_acess_key"
   awsLocalDynammoSecretAccessKey: "special_secret_acess_key"
+  ...
 ```
 
-# Working with `serverless.yml` 🦄
+Please notice the `awsLocalDynammoAccessKey` and the `awsLocalDynammoSecretAccessKey`. These two variabels are used for the local enviroment (otherwise it the local version will not runn) and you should define these variabels by generating a local dynammo db key. You can use [***this direct link***](https://console.aws.amazon.com/iam/home#/users$new?step=review&accessKey&userNames=aws-local-dev-dynamo-db-key&permissionType=policies&policies=arn:aws:iam::aws:policy%2FAmazonDynamoDBFullAccess) to the specific AWS IAM role.
+
+# Working with [`serverless.yml`](serverless.yml) 🦄
 This is where the magic happens.
 ## Available scripts 
 - [`npm run test`](package.json#L7) Executes evertying that has been wraped in the `function test(:callback)`
@@ -58,6 +56,7 @@ This is where the magic happens.
 - [`npm run deploy-dev`](package.json#L9) Deploys the API and Database to the development eviroment using the *AWS named profile*
 
 ## Getting startet
+- [Create the `env.yml` file](readme.md#L9)
 - [`npm run deploy-dev`](package.json#L9)
 - [`npm starts`](package.json#L8)
 - Goto [`localhost:3000`](http://localhost:3000/)
