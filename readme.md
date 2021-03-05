@@ -27,6 +27,29 @@ This service creates AWS databases and API's the ServerLess framework.
 
 [Serverless](https://www.serverless.com/) is a framework to build unified serverless aplication in various programming languages and using varios providers.
 
+
+# Creating a `env.yml` 🦄
+
+You will need to create this file yourself. 
+
+⚠️ ⚠️ ⚠️ **You should NEVER commit the `env.yml` file to github!** ⚠️ ⚠️ ⚠️
+
+```yml
+
+# HOW TO USE:
+#
+# 1 Add environment variables for local development.
+# 2 Make sure to not commit this file.
+
+prod:
+  testEnv: "This is a test env on production"
+
+default:
+  testEnv: "This is a test env on development/catch all"
+  awsLocalDynammoAccessKey: "special_acess_key"
+  awsLocalDynammoSecretAccessKey: "special_secret_acess_key"
+```
+
 # Working with `serverless.yml` 🦄
 This is where the magic happens.
 ## Available scripts 
