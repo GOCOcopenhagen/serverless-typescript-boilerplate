@@ -112,8 +112,12 @@ All functions must have a [name](serverless.yml#L60), which is used as a refrenc
 The handler is the path of the function we will execute. please notice the `main` in this example. Usally you will use names as `get`, `create` or `update`.
 Please remember it is possible to export multiple functions in the same file. This will be specified in the CRUD part.
 
-### EVENTS
-Event's are the triggers to specific functions. When creating a REST API we will usally use the `http` refrence, nested with HTTP Methods and paths to define the route for this endpoint.
+### Events
+Event's are the triggers to specific functions. 
+
+When creating a REST API we will usally use the `http` refrence, nested with HTTP Methods and paths to define the route for this endpoint.
+
+You can fx also use the `schedule` refrence to run a cron job or [any of these event types](https://www.serverless.com/framework/docs/providers/aws/events/).
 
 ### Creating a new endpoint
 
@@ -123,6 +127,7 @@ This boilerplate implements a Handler Libary which all functions should be wrapp
 
 import { Context, APIGatewayEvent } from "aws-lambda";
 import handler from "libs/handler-lib";
+import { YOUR_RESPONSE_TYPE } from "./responeTypes";
 
 export const get = handler(async (event: APIGatewayEvent, context: Context): Promise<YOUR_RESPONSE_TYPE> => {
   // YOUR LOGIC GOES HERE
