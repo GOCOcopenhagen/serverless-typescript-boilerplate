@@ -93,15 +93,55 @@ The API is a subset of functions, which can be availabe through our custom route
 
 All functions must have a [name](serverless.yml#L60), which is used as a refrence on the [CloudWatch-](https://aws.amazon.com/cloudwatch/) and [Lambda](https://aws.amazon.com/lambda/) console. 
 
+**Example from [`serverless.yml`](serverless.yml)**
+```yml
+  mirror:
+    handler: api/mirror.main
+    events:
+      - http:
+          path: mirror
+          method: get
+      - http:
+          path: mirror
+          method: put
+      - schedule:
+          rate: rate(24 hours)
+```
+
+### Handler
+The handler is the path of the function we will execute. please notice the `main` in this example. Usally you will use names as `get`, `create` or `update`.
+Please remember it is possible to export multiple functions in the same file. This will be specified in the CRUD part.
+
+### EVENTS
+Event's are the triggers to specific functions. When creating a REST API we will usally use the `http` refrence, nested with HTTP Methods and paths to define the route for this endpoint.
+
 ### Creating a new endpoint
 
-When creating a new endpoint 
+This boilerplate implements a Handler Libary which all functions should be wrapped in. This gives a great level of consistency. 
+
+```node
+
+import { Context, APIGatewayEvent } from "aws-lambda";
+import handler from "libs/handler-lib";
+
+export const get = handler(async (event: APIGatewayEvent, context: Context): Promise<YOUR_RESPONSE_TYPE> => {
+  // YOUR LOGIC GOES HERE
+  return ({ ... })
+})
+```
+
+You should replace `YOUR_RESPONSE_TYPE` with your own response type based on whatever project you are woking on.
+
 
 ### CRUD
-### EVENTS
-### Handler lib
+***TBA SOON***
+
+### Authentication
+***TBA SOON***
 
 ## Database 
+***WORK IN PROGRESS***
+
 * Under normal circumstances a DevOps will have local databases to work on. For this exampel we use an online database. *
 
 For this exampel we use an online database. 
@@ -110,8 +150,10 @@ You can spawn new database (only if necessary) using deploy with a custom stage 
 Hovever, the first time you run deploy-dev, a database on stage dev will be created.
 
 ### Creating a new table
+***TBA SOON***
 
 ## Tests
+***TBA SOON***
 
 ## Notes
 
