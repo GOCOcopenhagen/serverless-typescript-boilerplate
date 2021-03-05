@@ -49,14 +49,16 @@ We can supposed to only give acess to the services we actually use. Fx in [this 
 ### Glossary
 - `*` : Select everything [`ses:*`]
 - `Effect` : What we want to do [`Allow/Deny`]
-- 
+- `Action` : The services this statement applies to
+- `Arn` : Amazon Resource Name. 
+- `Fn::ImportValue` : Returns an output generated form an other stack (Fx from the database schema stack)
 
 ## Variabels and Serverless levels
 
-custom is the top level
-env.yml is the external api keys
+**`serverless.yml/custom`** is used as a top level. Here we will have stages, regions and other global service variabels.
+**`env.yml`** should be used for external api keys and other variabels outside the service scope.
 
-provider.environment is the level you will include into the current scope
+**`serverless.yml/provider.environment`** are the service level enviroment variabels. Here we will define the variabels we want to include in this service. *We need to include all the `custom` and `env.yml` variables here.* This might seem as double work, but this gives an security advantages when we have multiple service scopes nested in a service.
 
 ## API
 ### Creating a new endpoint
