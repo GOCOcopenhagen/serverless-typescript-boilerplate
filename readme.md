@@ -60,7 +60,7 @@ This is where the magic happens.
 - [`npm run deploy-dev`](package.json#L9)
 - [`npm starts`](package.json#L8)
 - Goto [`localhost:3000`](http://localhost:3000/)
-- Congratulations 🎉
+- Congratulations 🎉 🤩
 
 ## IAM Roles
 IAM (Identity Acess Management) allows us to restrict and define acess levels on AWS.
@@ -69,11 +69,11 @@ IAM Roles are widely used so this can be overwhelming at first sight. However, t
 We can supposed to only give acess to the services we actually use. Fx in [this example](serverless.yml#L32) we give the function acess to all resourcess, but only the sendTemplatedEmail, within SES. In [this other example](serverless.yml#L45) we only give acess to the `${self:custom.stage}-TestTableArn` table and we only allow our service to do simple CRUD operations with the dynamodb table
 
 ### Glossary
-- `*` : Select everything [`ses:*`]
-- `Effect` : What we want to do [`Allow/Deny`]
-- `Action` : The services this statement applies to
-- `Arn` : Amazon Resource Name. 
-- `Fn::ImportValue` : Returns an output generated form an other stack (Fx from the database schema stack)
+- [`*`](serverless.yml#L34) : Select everything [`ses:*`](serverless.yml#L31)
+- [`Effect`](serverless.yml#L29) : What we want to do [`Allow/Deny`](serverless.yml#L29)
+- [`Action`](serverless.yml#L30) : The services this statement applies to. Fx [`dynamodb:DescribeTable`](serverless.yml#L37)
+- [`Arn`](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) : Amazon Resource Name. 
+- [`Fn::ImportValue`](serverless.yml#L46) : Returns an output generated form an other stack (Fx from the database schema stack)
 
 ## Variabels and Serverless levels
 
