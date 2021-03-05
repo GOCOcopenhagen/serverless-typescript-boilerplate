@@ -28,7 +28,7 @@ This service creates AWS databases and API's the ServerLess framework.
 [Serverless](https://www.serverless.com/) is a framework to build unified serverless aplication in various programming languages and using varios providers.
 
 
-# Creating a `env.yml` 🦄
+# Creating a `env.yml` 🤫
 
 You will need to create this file yourself. 
 
