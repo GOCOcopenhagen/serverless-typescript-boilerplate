@@ -53,12 +53,13 @@ This is where the magic happens.
 ## Available scripts 
 - [`npm run test`](package.json#L7) Executes everything that has been wrapped in the `function test(:callback)`
 - [`npm starts`](package.json#L8) Starts the api locally on port [`:3000`](http://localhost:3000/)
-- [`npm run deploy-dev`](package.json#L9) Deploys the API and Database to the development environment using the *AWS named profile*
+- [`npm run deploy-dev`](package.json#L9) Deploys the API to the development environment using the *AWS named profile*
+- [`npm run deploy-database-dev`](package.json#L10) Deploys the Database to the development environment using the *AWS named profile*
 
 ## Getting started
 - Install serverless using [`npm i -g serverless` or equivalent](https://www.serverless.com/framework/docs/getting-started/)
 - Create the [`env.yml`](#creating-a-envyml-) file
-- [`npm run deploy-dev`](package.json#L9)
+- [`npm run deploy-database-dev`](package.json#L10)
 - [`npm starts`](package.json#L8)
 - Goto [`localhost:3000`](http://localhost:3000/)
 - Congratulations 🎉 🤩
