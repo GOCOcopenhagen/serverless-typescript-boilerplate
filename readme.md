@@ -2,10 +2,6 @@
 
 Author: [GOCO Copenhagen](https://goco.dk/)
 
-
-![GOCO Gif](documentation/into.gif)
-
-
 # Prerequisite
 
 #### Engine: `v12.*` / `Erbium`
@@ -162,3 +158,6 @@ However, the first time you run deploy-dev, a database on stage dev will be crea
 ***TBA SOON***
 
 ![Borat Gif](documentation/gg.gif)
+
+![GOCO Gif](documentation/into.gif)
+
